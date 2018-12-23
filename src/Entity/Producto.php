@@ -52,13 +52,13 @@ class Producto
     private $codigoBarra;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Marca")
+     * @ORM\ManyToOne(targetEntity="Marca", cascade={"persist"})
      * @ORM\JoinColumn(name="id", referencedColumnName="id")
      */
     private $marca;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Descripcion")
+     * @ORM\ManyToOne(targetEntity="Descripcion", cascade={"persist"})
      * @ORM\JoinColumn(name="id", referencedColumnName="id")
      */
     private $descripcion;
@@ -153,24 +153,24 @@ class Producto
         return $this;
     }
 
-    public function getMarca(): ?int
+    public function getMarca(): ?Marca
     {
         return $this->marca;
     }
 
-    public function setMarca(?int $marca): self
+    public function setMarca(?Marca $marca): self
     {
-        $this->marca = marca;
+        $this->marca = $marca;
 
         return $this;
     }
 
-    public function getDescripcion(): ?int
+    public function getDescripcion(): ?Descripcion
     {
         return $this->descripcion;
     }
 
-    public function setDescripcion(?int $descripcion): self
+    public function setDescripcion(?Descripcion $descripcion): self
     {
         $this->descripcion = $descripcion;
 

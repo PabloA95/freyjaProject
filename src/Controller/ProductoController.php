@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Producto;
+use App\Entity\Marca;
+use App\Entity\Descripcion;
 use App\Form\ProductoType;
 use App\Repository\ProductoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

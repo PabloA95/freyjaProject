@@ -76,16 +76,18 @@
 
 	  <div class="collapse navbar-collapse" id="navb">
 	    <ul class="navbar-nav mr-auto">
-	      <li class="nav-item">
-	        <a class="navbar-brand" href="http://localhost:8000">Productos</a>
+				<li class="nav-item">
+					<a class="navbar-brand" href="{{ path('producto_index') }}">Productos</a>
+				</li>
+				<li class="nav-item">
+	        <a class="navbar-brand" href="{{ path('marca_index') }}">Marca</a>
 	      </li>
-	      <li class="nav-item">
-	      	<a class="navbar-brand" href="http://localhost:8000/listar_productos.html">Venta</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="navbar-brand" href="http://localhost:8000/agregar_producto.html">Agregar Productos</a>
-	      </li>
-
+				<li class="nav-item">
+					<a class="navbar-brand" href="{{ path('descripcion_index') }}">Descripcion</a>
+				</li>
+				<li class="nav-item">
+					<a class="navbar-brand" href="{{ path('producto_new') }}">Agregar productos</a>
+				</li>
 	    </ul>
 	    <form class="form-inline my-2 my-lg-0">
 	      <input class="form-control mr-sm-2" type="text" placeholder="Buscar">
@@ -93,23 +95,11 @@
 	    </form>
 	  </div>
 	</nav>
-<div class="container col-md-12">
+<div class="container mt-3">
 	{% block body %}{% endblock %}
 </div>
 
 {% block javascripts %}{% endblock %}
-<!-- <div class="col-md-12 lalala">
-	<div class="pablo">
-	{% block paginador %}
-		<ul class="pagination">
-			<li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>
-			<li class="page-item"><a class="page-link" href="#">1</a></li>
-			<li class="page-item"><a class="page-link" href="#">2</a></li>
-			<li class="page-item"><a class="page-link" href="#">3</a></li>
-			<li class="page-item"><a class="page-link" href="#">Siguiente</a></li>
-		</ul>
-	{% endblock paginador %}
-	</div>
-</div> -->
+
 </body>
 </html>
