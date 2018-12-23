@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Descripcion index{% endblock %}
+
+{% block body %}
+    <h1>Descripcion index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Descripcion</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for descripcion in descripcions %}
+            <tr>
+                <td>{{ descripcion.id }}</td>
+                <td>{{ descripcion.descripcion }}</td>
+                <td>
+                    <a href="{{ path('descripcion_show', {'id': descripcion.id}) }}">show</a>
+                    <a href="{{ path('descripcion_edit', {'id': descripcion.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('descripcion_new') }}">Create new</a>
+{% endblock %}
