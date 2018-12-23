@@ -1,0 +1,345 @@
+{% extends 'base.html' %}
+<!--{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Productos</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<style type="text/css">
+   /*body { background: #A3E4D7 !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+
+   .navbar, .navbar-brand, a{ 
+    	background-color: #F8BBD0;
+    	color: #17a2b8 !important;
+	}
+
+	nav{
+		border-radius: 1em;
+	}
+				/*lalala>pablo*/
+	.lalala{
+		float: left;
+		align-items: center;
+		display: inline-block;
+
+	}
+
+	.pablo{
+		display:block;
+		/*width:37% ;
+		margin-right:31.5% !important; 
+		margin-left:31.5% !important;*/
+		position: absolute;
+	}
+
+	.nav-item{
+		margin-left: 2em !important;
+		/*font-weight: bold;*/
+	}
+
+	#logo{
+		display:block;
+		margin:auto;
+		width:150px; 
+		height:"auto";
+	}
+
+	#cont-logo{
+		background-color: #FFE4E1;
+	}
+
+	.boton{
+		padding: 0.5em;
+	}
+/*
+	.botones{
+		float: right;
+	}
+*/
+
+</style>
+<body >
+	<div id="cont-logo">
+		<img id="logo" src="{% static "/images/freyja_logo.png" %}" alt="LOGO">
+	</div>
+
+	<nav class="navbar navbar-expand-lg ">
+  <a class="navbar-brand" href="javascript:void(0)">Logo</a>
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navb">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="navbar-brand" href="javascript:void(0)">Productos</a>
+      </li>
+      <li class="nav-item">
+        <a class="navbar-brand" href="javascript:void(0)">Agregar Productos</a>
+      </li>
+      <li class="nav-item">
+        <a class="navbar-brand" href="javascript:void(0)">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Buscar">
+      <button class="btn btn-info my-2 my-sm-0" type="button">Buscar Producto</button>
+    </form>
+  </div>
+</nav>
+<br><br><br>
+<div class="container col-md-12">-->
+	{% block titulo %}
+		<title>Index</title>
+
+		<style type="text/css">
+	.formularios-agregar{
+		width: 100%;
+		align-items: center;
+		align-content: center;
+		text-align: center;
+		align-self: center;
+
+	}
+	.formulario{
+		margin: auto;
+	}
+	.span-group{
+		width: 7em !important;
+		opacity: 1 !important;
+	}
+
+	#agregar-marca, #agregar-descripcion{
+
+		padding-top: 5em;
+		padding-bottom: 5em;
+		width: 80%;
+		left: 10%;
+		right: 10%;
+		border-radius: 5%;
+
+	}
+	.boton-agregar{
+		width: 5.3em !important;
+	}
+
+	#marca1 p label{
+		background-color: #F00;
+	}
+</style>
+{% endblock %}
+
+{% block container %}
+{% if productos %}
+<div class="col-md-8" style="float: left; left: 1px; " >
+	<table class="table">	<thead>
+		<tr>
+			<th>Codigo</th>
+			<th>Descripcion</th>
+			<th>Precio Compra</th>
+			<th>Precio Venta</th>
+			<th>Marca</th>
+		</tr>
+	</thead>
+	<tbody>
+	{% for prod in productos %}
+		{% if prod.estado %}
+			<tr class="{% cycle 'table-danger' '' %} ">
+				<td>{{ prod.codigo }}</td>
+				<td>{{ prod.descripcion }}</td>
+				<td>{{ prod.precioCompra }}</td>
+				<td>{{ prod.precioEfect }}</td>
+				<td>{{ prod.marca }}</td>
+			</tr>
+		{% endif %}
+	{% endfor %}
+	</tbody>
+</table>
+{% else %}
+		<p>No hay productos para mostrar</p>
+{% endif %}
+</div>
+	<div class="botones">
+		<div align="center" class="boton">
+	      <button class="btn btn-info col-md-2"  type="button">Exportar a PDF</button>
+	    </div>  
+	    <div align="center" class="boton">
+	      <button class="btn btn-info col-md-2" align="center" type="button">Exportar a Excel</button>
+	  	</div>
+	</div>
+
+{% endblock %}
+<!--
+	<div class="col-md-8" style="float: left; left: 1px; " >
+	  <table class="table">
+	    <thead>
+	      <tr>
+	        <th>Codigo</th>
+	        <th>Descripcion</th>
+	        <th>Precio Compra</th>
+	        <th>Precio Venta</th>
+	        <th>Marca</th>
+	        <th>Operacion</th>
+	      </tr>
+	    </thead>
+	    <tbody>    
+	      <tr>
+	        <td>Primary</td>
+	        <td>Joe</td>
+	        <td>joe@example.com</td>
+	        <td>Primary</td>
+	        <td>Joe</td>
+	        <td>joe@example.com</td>
+	      </tr>
+	      <tr class="table-danger">
+	        <td>Success</td>
+	        <td>Doe</td>
+	        <td>john@example.com</td>
+	        <td>Primary</td>
+	        <td>Joe</td>
+	        <td>joe@example.com</td>
+	      </tr>
+	      <tr>
+	        <td>Danger</td>
+	        <td>Moe</td>
+	        <td>mary@example.com</td>
+	        <td>Primary</td>
+	        <td>Joe</td>
+	        <td>joe@example.com</td>
+	      </tr>
+	      <tr class="table-danger">
+	        <td>Info</td>
+	        <td>Dooley</td>
+	        <td>july@example.com</td>
+	        <td>Primary</td>
+	        <td>Joe</td>
+	        <td>joe@example.com</td>
+	      </tr>
+	      <tr>
+	        <td>Warning</td>
+	        <td>Refs</td>
+	        <td>bo@example.com</td>
+	        <td>Primary</td>
+	        <td>Joe</td>
+	        <td>joe@example.com</td>
+	      </tr>
+	      <tr class="table-danger">
+	        <td>Active</td>
+	        <td>Activeson</td>
+	        <td>act@example.com</td>
+	        <td>Primary</td>
+	        <td>Joe</td>
+	        <td>joe@example.com</td>
+	      </tr>
+	      <tr>
+	        <td>Secondary</td>
+	        <td>Secondson</td>
+	        <td>sec@example.com</td>
+	        <td>Primary</td>
+	        <td>Joe</td>
+	        <td>joe@example.com</td>
+	      </tr>
+	      <tr class="table-danger">
+	        <td>Light</td>
+	        <td>Angie</td>
+	        <td>angie@example.com</td>
+	        <td>Primary</td>
+	        <td>Joe</td>
+	        <td>joe@example.com</td>
+	      </tr>
+	      <tr>
+	        <td>Dark</td>
+	        <td>Bo</td>
+	        <td>bo@example.com</td>
+	        <td>Primary</td>
+	        <td>Joe</td>
+	        <td>joe@example.com</td>
+	      </tr>
+	    </tbody>
+	  </table>
+	</div>
+	<div class="botones">
+		<div align="center" class="boton">
+	      <button class="btn btn-info col-md-2"  type="button">Exportar a PDF</button>
+	    </div>  
+	    <div align="center" class="boton">
+	      <button class="btn btn-info col-md-2" align="center" type="button">Exportar a Excel</button>
+	  	</div>
+	</div>-->
+<!--
+<div id='agregar-marca'  class="formularios-agregar">
+	<h1>Agregar Marca</h1>
+	<form method="POST" class="col-md-6 formulario">
+		<div class="">
+			<div class="input-group input-group-lg mb-3">
+			  <div class="input-group-prepend">
+			    <span class="input-group-text span-group" style="background-color:#FFE4E1" id="basic-addon3">Codigo</span>
+			  </div>
+			  <input type="text" class="form-control" placeholder="Codigo" aria-label="Username" aria-describedby="basic-addon3">
+			</div>
+			<div class="input-group input-group-lg mb-3">
+			  <div class="input-group-prepend">
+			    <span class="input-group-text span-group" style="background-color:#FFE4E1" id="basic-addon1">Marca</span>
+			  </div>
+			  <input type="text" class="form-control" placeholder="Marca" aria-label="Username" aria-describedby="basic-addon1">
+			</div>
+			<br> 
+			<button type="button" class="btn btn-lg btn-info" style="float: left;">Cancelar</button>
+			<button type="button" class="btn btn-lg " style="float: right;background-color:#F8BBD0">Guardar</button>
+		</div>
+	</form>
+</div>
+<div  class="col-md-6">
+<form method="POST" id="marca1">-->
+	<!--{% csrf_token %}
+	{{ form.as_p }}
+	<button type="submit">Guardar</button>-->
+
+<!--#############################-->
+
+<!--	{% for field in form %}
+		{{ field.label_tag }}
+		{{ field }}
+	{% endfor %}-->
+
+<!--#############################-->
+
+<!--
+	  {% for field in form %}
+  <div id="{{ field.auto_id }}_container">
+    {{ field.help_text }}
+    <div>
+      {{ field.label_tag }} {{ field }}
+    </div>
+    <div id="{{ field.auto_id }}_errors">
+      {{ field.errors }}
+    </div>
+  </div>
+  {% endfor %}
+
+</form>
+</div>
+</div>
+
+<div class="col-md-12 lalala">
+	<div class="pablo">-->  
+		{% block paginador %}
+<!--		<ul class="pagination">
+			<li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>
+			<li class="page-item"><a class="page-link" href="#">1</a></li>
+			<li class="page-item"><a class="page-link" href="#">2</a></li>
+			<li class="page-item"><a class="page-link" href="#">3</a></li>
+			<li class="page-item"><a class="page-link" href="#">Siguiente</a></li>
+		</ul>-->
+		{% endblock %}
+<!--	</div>
+</div>
+
+</body>
+</html>-->

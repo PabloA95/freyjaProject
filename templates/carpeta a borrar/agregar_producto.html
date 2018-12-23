@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+<script type="text/javascript">
+
+function Esconder(id) {
+	document.getElementById(id).style.visibility="hidden"; 
+}
+function Mostrar(id) {
+	document.getElementById(id).style.visibility="visible"; 
+}
+</script>
+<title>Nuevo Producto</title>
+<style type="text/css">
+	.formularios-agregar{
+		width: 100%;
+		align-items: center;
+		align-content: center;
+		text-align: center;
+		align-self: center;
+
+	}
+	.formulario{
+		margin: auto;
+	}
+	.span-group{
+		width: 8.2em !important;
+		opacity: 1 !important;
+	}
+
+	#agregar-marca, #agregar-descripcion{
+		position: fixed;
+		top: 20%;
+		background-color: black;
+		opacity: 0.9;
+		padding-top: 5em;
+		padding-bottom: 5em;
+		visibility: hidden;
+		width: 80%;
+		left: 10%;
+		right: 10%;
+		border-radius: 5%;
+
+	}
+/*	.boton-agregar{
+		width: 5.3em !important;
+	}*/
+	#id_estado{
+		height: 3em;
+	}
+	.boton{
+		width: 3em;
+	}
+</style>
+{% endblock %}
+
+{% block container %}
+<div id="formulario_productos" class="formularios-agregar">
+	<form method="POST" class="col-md-6 formulario"> 
+		{% csrf_token %}
+		<div class="">
+
+			{% for campo in form %}
+			<div class="input-group input-group-lg mb-3">
+			  <div class="input-group-prepend">
+			    <span class="input-group-text span-group" style="background-color:#FFE4E1" id="basic-addon1">{{campo.label}}</span>
+			  </div>
+			  {{ campo }}
+			  {% if campo.label == 'Descripcion' %}
+			  	<button class="btn btn-info my-2 my-sm-0 boton" onclick="Mostrar('agregar-descripcion')" type="button">+</button>
+			  	<!--<a onclick="Mostrar('agregar-descripcion')" class="input-group-text span-group  boton-agregar" style="text-align: center;">Agregar</a>-->
+			  {% elif campo.label == 'Marca' %}
+			  	<button class="btn btn-info my-2 my-sm-0 boton" onclick="Mostrar('agregar-marca')" type="button">+</button>
+			  	<!--<a onclick="Mostrar('agregar-marca')" class="boton-agregar" style="text-align: center;"><img src="http://fundacionmasqueideas.org/wp-content/uploads/2014/03/logo-cruz-portada-fundacionMQI.png" style="width: 3em; height: 3em;"></a>-->
+			  {% endif %}
+			</div>
+			{% endfor %}
+			<br> 
+			<button type="reset" class="btn btn-lg btn-info" style="float: left;">Cancelar</button>
+			<button type="submit" class="btn btn-lg " style="float: right;background-color:#F8BBD0">Guardar</button>
+		
+	</form>
+</div>
+<br>
+<div id='agregar-marca'  class="formularios-agregar">
+	<h1>Agregar Marca</h1>
+	<form method="POST" class="col-md-6 formulario" action="{% url 'agregar_marca' %}">
+		{% csrf_token %}
+		<div class="input-group input-group-lg mb-3">
+		  <div class="input-group-prepend">
+		    <span class="input-group-text span-group" style="background-color:#FFE4E1" id="basic-addon3" required >Marca</span>
+		  </div>
+		  {{ form2.descrip }}
+		</div>
+		<br> 
+		<button onclick="Esconder('agregar-marca')" type="reset" class="btn btn-lg btn-info" style="float: left;">Cancelar</button>
+		<button type="submit" class="btn btn-lg " style="float: right;background-color:#F8BBD0">Guardar</button>
+	</form>
+</div>
+
+<div id='agregar-descripcion'  class="formularios-agregar">
+	<h1>Agregar descripcion</h1>
+	<form method="POST" class="col-md-6 formulario" action="{% url 'agregar_descripcion' %}">
+		{% csrf_token %}
+		<div class="input-group input-group-lg mb-3">
+		  <div class="input-group-prepend">
+			<span class="input-group-text span-group" style="background-color:#FFE4E1" id="basic-addon3">Descripcion</span>
+		  </div>
+		  {{ form3.descrip }}
+		</div>
+		<br> 
+		<button onclick="Esconder('agregar-descripcion')" type="reset" class="btn btn-lg btn-info" style="float: left;">Cancelar</button>
+		<button type="submit" class="btn btn-lg " style="float: right;background-color:#F8BBD0">Guardar</button>
+	</form>
+</div> 
+<br>
+<br>
+<br>
+{% endblock container %}
+
+
+
+{% block paginador %}
+{% endblock %}

@@ -1,12 +1,115 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<html lang="en">
+<head>
+	{% block titulo %}
+  <title>Productos</title>
+    {% endblock %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	{% block stylesheets %}{% endblock %}
+</head>
+<style type="text/css">
+   /*body { background: #A3E4D7 !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+
+   .navbar, .navbar-brand, a{
+    	background-color: #F8BBD0;
+    	color: #17a2b8 !important;
+	}
+
+	nav{
+		border-radius: 1em;
+	}
+				/*lalala>pablo*/
+	.lalala{
+		float: left;
+		align-items: center;
+		display: inline-block;
+
+	}
+
+	.pablo{
+		display:block;
+		/*width:37% ;
+		margin-right:31.5% !important;
+		margin-left:31.5% !important;*/
+		position: absolute;
+	}
+
+	.nav-item{
+		margin-left: 2em !important;
+		/*font-weight: bold;*/
+	}
+
+	#logo{
+		display:block;
+		margin:auto;
+		width:150px;
+		height:"auto";
+	}
+
+	/*#cont-logo{
+		background-color: #FFE4E1;
+	}*/
+
+	.boton{
+		padding: 0.5em;
+	}
+/*
+	.botones{
+		float: right;
+	}
+*/
+
+</style>
+<body >
+	<div id="cont-logo">
+		<img id="logo" src="./images/freyja_logo.png" alt="LOGO">
+	</div>
+	<nav class="navbar navbar-expand-lg">
+	  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+
+	  <div class="collapse navbar-collapse" id="navb">
+	    <ul class="navbar-nav mr-auto">
+	      <li class="nav-item">
+	        <a class="navbar-brand" href="http://localhost:8000">Productos</a>
+	      </li>
+	      <li class="nav-item">
+	      	<a class="navbar-brand" href="http://localhost:8000/listar_productos.html">Venta</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="navbar-brand" href="http://localhost:8000/agregar_producto.html">Agregar Productos</a>
+	      </li>
+
+	    </ul>
+	    <form class="form-inline my-2 my-lg-0">
+	      <input class="form-control mr-sm-2" type="text" placeholder="Buscar">
+	      <button class="btn btn-info my-2 my-sm-0" type="button">Buscar Producto</button>
+	    </form>
+	  </div>
+	</nav>
+<div class="container col-md-12">
+	{% block body %}{% endblock %}
+</div>
+
+{% block javascripts %}{% endblock %}
+<!-- <div class="col-md-12 lalala">
+	<div class="pablo">
+	{% block paginador %}
+		<ul class="pagination">
+			<li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>
+			<li class="page-item"><a class="page-link" href="#">1</a></li>
+			<li class="page-item"><a class="page-link" href="#">2</a></li>
+			<li class="page-item"><a class="page-link" href="#">3</a></li>
+			<li class="page-item"><a class="page-link" href="#">Siguiente</a></li>
+		</ul>
+	{% endblock paginador %}
+	</div>
+</div> -->
+</body>
 </html>

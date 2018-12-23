@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+
+<title>Nuevo Producto</title>
+<style type="text/css">
+	#formulario_productos{
+		width: 100%;
+		align-items: center;
+		align-content: center;
+		text-align: center;
+		align-self: center;
+	}
+	#formulario{
+		margin: auto;
+	}
+	.span-group{
+		width: 7em !important;
+	}
+</style>
+
+{% endblock %}
+
+{% block container %}
+<div id="formulario_productos">
+	<form method="POST" id="formulario" class="col-md-6" >
+		<div class="">
+			<div class="input-group input-group-lg mb-3">
+			  <div class="input-group-prepend">
+			    <span class="input-group-text span-group" style="background-color:#FFE4E1" id="basic-addon3">Codigo</span>
+			  </div>
+			  <input type="text" class="form-control" placeholder="Codigo" aria-label="Username" aria-describedby="basic-addon3">
+			</div>
+			<div class="input-group input-group-lg mb-3">
+			  <div class="input-group-prepend">
+			    <span class="input-group-text span-group" style="background-color:#FFE4E1" id="basic-addon1">Marca</span>
+			  </div>
+			  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+			</div>
+			<div class="input-group input-group-lg mb-3">
+			  <div class="input-group-prepend">
+			    <span class="input-group-text span-group" style="background-color:#FFE4E1" id="basic-addon1">Descripcion</span>
+			  </div>
+			  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+			</div>
+			<div class="input-group input-group-lg mb-3">
+			  <div class="input-group-prepend">
+			    <span class="input-group-text span-group" style="background-color:#FFE4E1" id="basic-addon1">P.Compra</span>
+			  </div>
+			  <input type="text" class="form-control" placeholder="$" aria-label="Username" aria-describedby="basic-addon1">
+			</div>
+			<div class="input-group input-group-lg mb-3">
+			  <div class="input-group-prepend">
+			    <span class="input-group-text span-group" style="background-color:#FFE4E1" id="basic-addon1">P.Venta</span>
+			  </div>
+			  <input type="text" class="form-control" placeholder="$" aria-label="Username" aria-describedby="basic-addon1">
+			</div>
+			<br> 
+			<button type="button" class="btn btn-lg btn-info" style="float: left;">Cancelar</button>
+			<button type="button" class="btn btn-lg " style="float: right;background-color:#F8BBD0">Guardar</button>
+		</div>
+	</form>
+</div>
+{% endblock container %}
+
+
+
+{% block paginador %}
+{% endblock %}
