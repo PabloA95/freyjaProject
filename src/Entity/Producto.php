@@ -52,13 +52,13 @@ class Producto
     private $codigoBarra;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Marca", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Marca", cascade={"persist"}, fetch="EAGER")
      * @ORM\JoinColumn(name="id", referencedColumnName="id")
      */
     private $marca;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Descripcion", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Descripcion", cascade={"persist"}, fetch="EAGER")
      * @ORM\JoinColumn(name="id", referencedColumnName="id")
      */
     private $descripcion;

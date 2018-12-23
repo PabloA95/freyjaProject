@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Marca index{% endblock %}
+{% block title %}Marcas{% endblock %}
 
 {% block body %}
-    <h1>Marca index</h1>
-
-    <table class="table">
+<div class="container">
+  <div class="col-md-8 offset-md-2">
+    <h1>Marcas</h1>
+    <table class="table table-striped">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Descripcion</th>
                 <th>actions</th>
             </tr>
@@ -16,11 +16,10 @@
         <tbody>
         {% for marca in marcas %}
             <tr>
-                <td>{{ marca.id }}</td>
                 <td>{{ marca.descripcion }}</td>
                 <td>
-                    <a href="{{ path('marca_show', {'id': marca.id}) }}">show</a>
-                    <a href="{{ path('marca_edit', {'id': marca.id}) }}">edit</a>
+                    <a href="{{ path('marca_show', {'id': marca.id}) }}" class="btn btn-primary">Ver</a>
+                    <a href="{{ path('marca_edit', {'id': marca.id}) }}" class='btn btn-info'>Editar</a>
                 </td>
             </tr>
         {% else %}
@@ -31,5 +30,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('marca_new') }}">Create new</a>
+    <a href="{{ path('marca_new') }}" class='btn btn-success'>Agregar marca</a>
+  </div>
+</div>
 {% endblock %}

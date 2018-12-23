@@ -1,41 +1,62 @@
 {{ form_start(form) }}
-<div class="text-center container col-lg-10 col-md-10 col-sm-10 card">
-  <div class="col-md-12">
-    <div class="input-group mt-12 mb-12">
+<div class="container card col-10">
+  <div class="col-md-12 mt-3 mb-3">
+    <div class="input-group">
       <div class="form-group col-md-5 offset-md-1">
-        {{form_row(form.codigo)}}
+        {{form_label(form.codigo, null, {'label_attr': {'class': 'input-group-text'}})}}
+        {{form_widget(form.codigo, {'attr': {'class': 'form-control'}})}}
       </div>
       <div class="form-group col-md-5">
-        {{form_row(form.precioEfectivo)}}
+        {{form_label(form.precioEfectivo, null, {'label_attr': {'class': 'input-group-text'}})}}
+        {{form_widget(form.precioEfectivo, {'attr': {'class': 'form-control'}})}}
       </div>
     </div>
-    <div class="input-group mt-12 mb-12">
+    <div class="input-group">
       <div class="form-group col-md-5 offset-md-1">
-        {{form_row(form.precioCompra)}}
+        {{form_label(form.precioCompra, null, {'label_attr': {'class': 'input-group-text'}})}}
+        {{form_widget(form.precioCompra, {'attr': {'class': 'form-control'}})}}
       </div>
       <div class="form-group col-md-5">
-        {{form_row(form.precioTarjeta)}}
+        {{form_label(form.precioTarjeta, null, {'label_attr': {'class': 'input-group-text'}})}}
+        {{form_widget(form.precioTarjeta, {'attr': {'class': 'form-control'}})}}
       </div>
     </div>
-    <div class="input-group mt-12 mb-12">
-    <div class="form-group col-md-2">
-      {{form_row(form.estado)}}
+    <div class="input-group">
+      <div class="form-group col-md-2 offset-md-1">
+        {{form_label(form.estado, null, {'label_attr': {'class': 'input-group-text'}})}}
+        {{form_widget(form.estado, {'attr': {'class': 'form-control'}})}}
+      </div>
+      <div class="form-group col-md-4">
+        {{form_label(form.stock, null, {'label_attr': {'class': 'input-group-text'}})}}
+        {{form_widget(form.stock, {'attr': {'class': 'form-control'}})}}
+      </div>
+      <div class="form-group col-md-4">
+        {{form_label(form.codigoBarra, null, {'label_attr': {'class': 'input-group-text'}})}}
+        {{form_widget(form.codigoBarra, {'attr': {'class': 'form-control'}})}}
+      </div>
     </div>
-    <div class="form-group col-md-4">
-      {{form_row(form.stock)}}
-    </div>
-    <div class="form-group col-md-5">
-      {{form_row(form.codigoBarra)}}
-    </div>
-    <div class="input-group mt-12 mb-12">
+    <div class="input-group">
       <div class="form-group col-md-5 offset-md-1">
-        {{form_row(form.marca)}}
+        {{form_label(form.marca, null, {'label_attr': {'class': 'input-group-text'}})}}
+        {{form_widget(form.marca, {'attr': {'class': 'form-control'}})}}
       </div>
       <div class="form-group col-md-5">
-        {{form_row(form.descripcion)}}
+        {{form_label(form.descripcion, null, {'label_attr': {'class': 'input-group-text'}})}}
+        {{form_widget(form.descripcion, {'attr': {'class': 'form-control'}})}}
       </div>
     </div>
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <div class="row align-items-center justify-content-center">
+      <button class="btn width7em" style="width:7em;">{{ button_label|default('Crear') }}</button>
+      <a href="{{ path('producto_index') }}" class="btn btn-danger col-md-2 width7em" style="width:7em;">Cancelar</a>
+    </div>
+    <!--     <div class="row align-items-center justify-content-center">
+          <div>
+            <button class="btn width7em" style="width:7em;">{{ button_label|default('Crear') }}</button>
+          </div>
+          <div>
+            <a href="{{ path('producto_index') }}" class="btn btn-danger col-md-2 width7em" style="width:7em;">Cancelar</a>
+          </div>
+        </div> -->
   </div>
 </div>
 {{ form_end(form) }}

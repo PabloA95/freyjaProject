@@ -1,11 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Descripcion index{% endblock %}
+{% block title %}Descripciones{% endblock %}
 
 {% block body %}
-    <h1>Descripcion index</h1>
+<div class="container">
+  <div class="col-md-8 offset-md-2">
+    <h1>Descripciones</h1>
 
-    <table class="table">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>Id</th>
@@ -19,8 +21,8 @@
                 <td>{{ descripcion.id }}</td>
                 <td>{{ descripcion.descripcion }}</td>
                 <td>
-                    <a href="{{ path('descripcion_show', {'id': descripcion.id}) }}">show</a>
-                    <a href="{{ path('descripcion_edit', {'id': descripcion.id}) }}">edit</a>
+                    <a href="{{ path('descripcion_show', {'id': descripcion.id}) }}" class="btn btn-primary">Ver</a>
+                    <a href="{{ path('descripcion_edit', {'id': descripcion.id}) }}" class='btn btn-info'>Editar</a>
                 </td>
             </tr>
         {% else %}
@@ -31,5 +33,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('descripcion_new') }}">Create new</a>
+    <a href="{{ path('descripcion_new') }}" class='btn btn-success'>Agregar descripcion</a>
+  </div>
+</div>
 {% endblock %}

@@ -2,20 +2,38 @@
 
 {% block title %}Producto index{% endblock %}
 
+{% block stylesheets %}
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#productos').DataTable({
+            "lengthChange" : false,
+            "paging" : true,
+            "pageLength" : 5
+        });
+    } );
+</script>
+{% endblock %}
+
 {% block body %}
     <h1>Producto index</h1>
 
-    <table class="table table-striped">
+    <table class="table table-striped" id="productos">
         <thead>
             <tr>
                 <!-- <th>Id</th> -->
                 <th>Codigo</th>
+                <th>Marca</th>
+                <th>Descripcion</th>
                 <th>PrecioEfectivo</th>
                 <th>PrecioTarjeta</th>
                 <th>PrecioCompra</th>
-                <th>Estado</th>
+                <!-- <th>Estado</th>
                 <th>Stock</th>
-                <th>CodigoBarra</th>
+                <th>CodigoBarra</th> -->
                 <th>actions</th>
             </tr>
         </thead>
@@ -24,15 +42,17 @@
             <tr>
                 <!-- <td>{{ producto.id }}</td> -->
                 <td>{{ producto.codigo }}</td>
+                <td>{{ producto.marca.descripcion }}</td>
+                <td>{{ producto.descripcion.descripcion }}</td>
                 <td>{{ producto.precioEfectivo }}</td>
                 <td>{{ producto.precioTarjeta }}</td>
                 <td>{{ producto.precioCompra }}</td>
-                <td>{{ producto.estado ? 'Yes' : 'No' }}</td>
+                <!-- <td>{{ producto.estado ? 'Yes' : 'No' }}</td>
                 <td>{{ producto.stock }}</td>
-                <td>{{ producto.codigoBarra }}</td>
+                <td>{{ producto.codigoBarra }}</td> -->
                 <td>
-                    <a href="{{ path('producto_show', {'id': producto.id}) }}">show</a>
-                    <a href="{{ path('producto_edit', {'id': producto.id}) }}">edit</a>
+                    <a href="{{ path('producto_show', {'id': producto.id}) }}" class="btn btn-primary">Ver</a>
+                    <a href="{{ path('producto_edit', {'id': producto.id}) }}" class='btn btn-info'>Editar</a>
                 </td>
             </tr>
         {% else %}
@@ -43,5 +63,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('producto_new') }}">Create new</a>
+    <a href="{{ path('producto_new') }}" class='btn btn-success'>Agregar marca</a>
 {% endblock %}
