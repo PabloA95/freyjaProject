@@ -1,0 +1,54 @@
+{% block head %}
+  <title>Registrar usuarix</title>
+{% endblock %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+<div class="text-center container col-md-10 col-lg-8 mt-5">
+  <h2>Registrar un usuarix</h2>
+  <hr>
+	{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+  {% if (form_errors(form) is not empty ) and  (form_errors(form.plainPassword) is empty) %}
+  <div class="alert alert-danger" role="alert">
+    El número de dni está en uso
+  </div>
+  {% endif %}
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-12 mt-2">
+        {{ form_row(form.nombre, {'attr': {'class': 'form-control mb-3', 'placeholder':'Ingrese su nombre', 'autofocus':true} })}}
+      </div>
+      <div class=" col-lg-6 col-md-6 col-sm-6 col-12 mt-2">
+        {{ form_row(form.apellido, {'attr': {'class': 'form-control mb-3', 'placeholder':'Ingrese su apellido'} })}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-12 mt-2">
+        {{ form_row(form.dni, {'attr': {'class': 'form-control mb-3', 'placeholder':'Ingrese su DNI', 'pattern':'[0-9]{8}', 'title':"Solo numeros"}, 'label':'DNI'})}}
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 col-12 mt-2">
+        {{ form_row(form.profesion, {'attr': {'class': 'form-control mb-3'}}) }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-12 mt-2">
+        {{ form_row(form.plainPassword.first, {'attr': {'class': 'form-control mb-3'}}) }}
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 col-12 mt-2">
+        {{ form_row(form.plainPassword.second, {'attr': {'class': 'form-control mb-3'}}) }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        {{ form_row(form.esAdmin, {'label':'Rol administradorx', 'attr': {'class': 'm-2'}}) }}
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-3 col-sm-4 col-4">
+        <a class="btn btn-volver" href="/usuario" onclick="return confirm('Los datos se perderán, seguro que desea volver?')"><i class="material-icons align-bottom">keyboard_backspace</i>Volver</a>
+      </div>
+      <div class="col-md-3 col-sm-4 col-4">
+        <input class="btn btn-violet" type="submit" value="Registrar usuarix" />
+      </div>
+    </div>
+
+	{{ form_end(form) }}
+</div>

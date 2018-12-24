@@ -1,0 +1,26 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% if error %}
+    <div class="alert alert-warning text-center">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+<div class="text-center container col-md-4 mt-5 border-violet card">
+  <h1 class="mt-2 mb-2">Iniciar sesión</h1>
+  <form action="{{ path("fos_user_security_check") }}" method="post">
+    {% if csrf_token %}
+      <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+    {% endif %}
+    <div class="input-group mt-2">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="username">DNI</span>
+      </div>
+      <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username"/>
+    </div>
+    <div class="input-group mt-2">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="password">Contraseña</span>
+      </div>
+      <input class="form-control" type="password" id="password" name="_password" placeholder="" required="required" autocomplete="current-password" />
+    </div>
+    <input class="btn btn-violet" type="submit" id="_submit" name="_submit" value="Iniciar sesión" />
+  </form>
+</div>

@@ -1,0 +1,17 @@
+{% extends 'layout.html.twig' %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+  <div class="alert alert-success text-center mt-2">
+    <p>La cuenta fue creada con éxito</p>
+  </div>
+  <div class="row justify-content-center">
+    <div >
+      <a class="btn btn-violet" href="/"><i class="material-icons align-bottom">home</i>Volver al inicio</a>
+    </div>
+  </div>
+    {% if targetUrl %}
+    <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
+    {% endif %}
+{% endblock fos_user_content %}
