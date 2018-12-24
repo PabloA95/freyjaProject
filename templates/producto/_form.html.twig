@@ -1,4 +1,55 @@
 {{ form_start(form) }}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<style type="text/css">
+	.formularios-agregar{
+		width: 100%;
+		align-items: center;
+		align-content: center;
+		text-align: center;
+		align-self: center;
+
+	}
+	.formulario{
+		margin: auto;
+	}
+	.span-group{
+		width: 8.2em !important;
+		opacity: 1 !important;
+	}
+
+	#agregar-marca, #agregar-descripcion{
+		position: fixed;
+		top: 20%;
+		background-color: black;
+		opacity: 0.9;
+		padding-top: 5em;
+		padding-bottom: 5em;
+		visibility: hidden;
+		width: 80%;
+		left: 10%;
+		right: 10%;
+		border-radius: 5%;
+
+	}
+/*	.boton-agregar{
+		width: 5.3em !important;
+	}*/
+	#id_estado{
+		height: 3em;
+	}
+	.boton{
+		width: 3em;
+	}
+  .titulo{
+    color: white;
+  }
+</style>
+<style media="screen">
+  .width7em{
+    width:7em !important;
+  }
+</style>
 <div class="container card col-10">
   <div class="col-md-12 mt-3 mb-3">
     <div class="input-group">
@@ -7,14 +58,30 @@
         {{form_widget(form.codigo, {'attr': {'class': 'form-control'}})}}
       </div>
       <div class="form-group col-md-5">
-        {{form_label(form.precioEfectivo, null, {'label_attr': {'class': 'input-group-text'}})}}
-        {{form_widget(form.precioEfectivo, {'attr': {'class': 'form-control'}})}}
+        {{form_label(form.precioCompra, null, {'label_attr': {'class': 'input-group-text'}})}}
+        {{form_widget(form.precioCompra, {'attr': {'class': 'form-control'}})}}
       </div>
     </div>
     <div class="input-group">
       <div class="form-group col-md-5 offset-md-1">
-        {{form_label(form.precioCompra, null, {'label_attr': {'class': 'input-group-text'}})}}
-        {{form_widget(form.precioCompra, {'attr': {'class': 'form-control'}})}}
+        {{form_label(form.marca, null, {'label_attr': {'class': 'input-group-text'}})}}
+        <div class="input-group-prepend">
+          {{form_widget(form.marca, {'attr': {'class': 'form-control'}})}}
+          <button type="button" name="button" onclick="Mostrar('agregar-marca')" class="btn-primary">+</button>
+        </div>
+      </div>
+      <div class="form-group col-md-5">
+        {{form_label(form.descripcion, null, {'label_attr': {'class': 'input-group-text'}})}}
+        <div class="input-group-prepend">
+          {{form_widget(form.descripcion, {'attr': {'class': 'form-control'}})}}
+          <button type="button" name="button" onclick="Mostrar('agregar-descripcion')" class="btn-primary">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="input-group">
+      <div class="form-group col-md-5 offset-md-1">
+        {{form_label(form.precioEfectivo, null, {'label_attr': {'class': 'input-group-text'}})}}
+        {{form_widget(form.precioEfectivo, {'attr': {'class': 'form-control'}})}}
       </div>
       <div class="form-group col-md-5">
         {{form_label(form.precioTarjeta, null, {'label_attr': {'class': 'input-group-text'}})}}
@@ -35,19 +102,11 @@
         {{form_widget(form.codigoBarra, {'attr': {'class': 'form-control'}})}}
       </div>
     </div>
-    <div class="input-group">
-      <div class="form-group col-md-5 offset-md-1">
-        {{form_label(form.marca, null, {'label_attr': {'class': 'input-group-text'}})}}
-        {{form_widget(form.marca, {'attr': {'class': 'form-control'}})}}
-      </div>
-      <div class="form-group col-md-5">
-        {{form_label(form.descripcion, null, {'label_attr': {'class': 'input-group-text'}})}}
-        {{form_widget(form.descripcion, {'attr': {'class': 'form-control'}})}}
-      </div>
+
     </div>
     <div class="row align-items-center justify-content-center">
-      <button class="btn width7em" style="width:7em;">{{ button_label|default('Crear') }}</button>
-      <a href="{{ path('producto_index') }}" class="btn btn-danger col-md-2 width7em" style="width:7em;">Cancelar</a>
+      <button class="btn width7em mr-1">{{ button_label|default('Crear') }}</button>
+      <a href="{{ path('producto_index') }}" class="btn btn-danger width7em ml-1">Cancelar</a>
     </div>
     <!--     <div class="row align-items-center justify-content-center">
           <div>
@@ -57,6 +116,49 @@
             <a href="{{ path('producto_index') }}" class="btn btn-danger col-md-2 width7em" style="width:7em;">Cancelar</a>
           </div>
         </div> -->
+
   </div>
 </div>
 {{ form_end(form) }}
+
+<script type="text/javascript">
+
+function Esconder(id) {
+document.getElementById(id).style.visibility="hidden";
+}
+function Mostrar(id) {
+document.getElementById(id).style.visibility="visible";
+}
+</script>
+<div id='agregar-marca'  class="formularios-agregar">
+  <h1 class="titulo">Agregar Marca</h1>
+  {{ form_start(formMarca)}}
+  <div class="input-group input-group-lg mb-5">
+    <div class="input-group-prepend m-auto">
+      <span class="input-group-text span-group" style="background-color:#FFE4E1" id="basic-addon3" required >Marca</span>
+      {{ form_widget(formMarca, {'attr':{'class':'form-control', 'placeholder':'Descripcion'}})}}
+    </div>
+  </div>
+  <div class="col-md-4 m-auto">
+    <button onclick="Esconder('agregar-marca')" type="reset" class="btn btn-lg btn-info" style="float: left;">Cancelar</button>
+    <button type="submit" class="btn btn-lg " style="float: right;background-color:#F8BBD0">Guardar</button>
+  </div>
+  {{ form_end(formMarca, {'attr':{'class':'d-flex flex-row justify-content-center align-items-center'}})}}
+</div>
+
+<div id='agregar-descripcion'  class="formularios-agregar">
+  <h1 class="titulo">Agregar descripcion</h1>
+  {{ form_start(formDescripcion)}}
+  <div class="input-group input-group-lg mb-5">
+    <div class="input-group-prepend m-auto">
+      <span class="input-group-text span-group" style="background-color:#FFE4E1" id="basic-addon3">Descripcion</span>
+      {{ form_widget(formDescripcion, {'attr':{'class':'form-control', 'placeholder':'Descripcion'}})}}
+    </div>
+
+  </div>
+  <div class="col-md-4 m-auto">
+    <button onclick="Esconder('agregar-descripcion')" type="reset" class="btn btn-lg btn-info" style="float: left;">Cancelar</button>
+    <button type="submit" class="btn btn-lg " style="float: right;background-color:#F8BBD0">Guardar</button>
+  </div>
+  {{ form_end(formDescripcion)}}
+</div>

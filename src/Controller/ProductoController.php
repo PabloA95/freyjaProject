@@ -6,6 +6,8 @@ use App\Entity\Producto;
 use App\Entity\Marca;
 use App\Entity\Descripcion;
 use App\Form\ProductoType;
+use App\Form\MarcaType;
+use App\Form\DescripcionType;
 use App\Repository\ProductoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,18 +35,37 @@ class ProductoController extends AbstractController
         $producto = new Producto();
         $form = $this->createForm(ProductoType::class, $producto);
         $form->handleRequest($request);
-
+        $marca = new Marca();
+        $formMarca = $this->createForm(MarcaType::class, $marca);
+        $formMarca->handleRequest($request);
+        $descripcion = new Descripcion();
+        $formDescripcion = $this->createForm(DescripcionType::class, $descripcion);
+        $formDescripcion->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($producto);
             $entityManager->flush();
-
             return $this->redirectToRoute('producto_index');
         }
-
+        if ($formMarca->isSubmitted() && $formMarca->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($marca);
+            $entityManager->flush();
+            return $this->redirectToRoute('producto_new');
+        }
+        if ($formDescripcion->isSubmitted() && $formDescripcion->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($descripcion);
+            $entityManager->flush();
+            return $this->redirectToRoute('producto_new');
+        }
         return $this->render('producto/new.html.twig', [
             'producto' => $producto,
             'form' => $form->createView(),
+            'marca' => $producto,
+            'formMarca' => $formMarca->createView(),
+            'descripcion' => $descripcion,
+            'formDescripcion' => $formDescripcion->createView(),
         ]);
     }
 
