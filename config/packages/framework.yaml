@@ -17,3 +17,11 @@ framework:
         log: true
     templating:
         engines: ['twig', 'php']
+    assets:
+        packages:
+            images:
+                base_path: 'images'
+            css:
+                base_path: 'css'
+            js:
+                base_path: 'js'

@@ -6,79 +6,26 @@
     {% endblock %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="{{ asset('bootstrap.min.css', 'css') }}">
+	<link rel="stylesheet" href="{{ asset('own.css', 'css') }}">
+	<script src="{{ asset('jquery.min.js', 'js') }}"></script>
+	<script src="{{ asset('popper.min.js', 'js') }}"></script>
+	<script src="{{ asset('bootstrap.min.js', 'js') }}"></script>
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
 	{% block stylesheets %}{% endblock %}
 </head>
-<style type="text/css">
-   /*body { background: #A3E4D7 !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
 
-   .navbar, .navbar-brand, a{
-    	background-color: #F8BBD0;
-    	color: #17a2b8 !important;
-	}
-
-	nav{
-		border-radius: 1em;
-	}
-				/*lalala>pablo*/
-	.lalala{
-		float: left;
-		align-items: center;
-		display: inline-block;
-
-	}
-
-	.pablo{
-		display:block;
-		/*width:37% ;
-		margin-right:31.5% !important;
-		margin-left:31.5% !important;*/
-		position: absolute;
-	}
-
-	.nav-item{
-		margin-left: 2em !important;
-		/*font-weight: bold;*/
-	}
-
-	#logo{
-		display:block;
-		margin:auto;
-		width:150px;
-		height:"auto";
-	}
-
-	/*#cont-logo{
-		background-color: #FFE4E1;
-	}*/
-
-	.boton{
-		padding: 0.5em;
-	}
-/*
-	.botones{
-		float: right;
-	}
-*/
-
-</style>
-
-<style>
-	.width7em{
-		width: 7em !important;
-	}
-</style>
 <body >
-	<div id="cont-logo">
-		<img src="{{ asset('./images/freyja_logo.png') }}">
-		<!-- <img id="logo" src="./images/freyja_logo.png" alt="LOGO"> -->
+	<div id="cont-logo" class="center">
+		<img src="{{ asset('freyja_logo.png', 'images') }}" alt="Logo de Freyja" id="logo-freyja">
 	</div>
+	{% block navbar %}
 	<nav class="navbar navbar-expand-lg">
 	  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
-	    <span class="navbar-toggler-icon"></span>
+	    <img src="{{ asset('hm.png', 'images') }}" alt="Menu desplegable" id="hamburger-menu">
 	  </button>
 
 	  <div class="collapse navbar-collapse" id="navb">
@@ -113,11 +60,20 @@
 
 	  </div>
 	</nav>
+	{% endblock %}
 <div class="container mt-3">
 	{% block body %}{% endblock %}
 </div>
 
-{% block javascripts %}{% endblock %}
 
+<footer id="footer" class="page-footer unique-color-dark mt-4">
+  <div class="footer-copyright py-3 text-center">
+    © 2019 Copyright:
+    <a href="https://www.facebook.com/freyja.lenceria.5">
+      <strong>Freyja Lenceria</strong>
+    </a>
+  </div>
+</footer>
+{% block javascripts %}{% endblock %}
 </body>
 </html>

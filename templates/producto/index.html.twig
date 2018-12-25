@@ -3,10 +3,14 @@
 {% block title %}Producto index{% endblock %}
 
 {% block stylesheets %}
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+<!-- <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script> -->
+<!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css"> -->
+<link rel="stylesheet" href="{{ asset('dataTables.css', 'css') }}">
+<link rel="stylesheet" href="{{ asset('dataTables.min.css', 'css') }}">
+<script src="{{ asset('dataTables.js', 'js') }}"></script>
+
 <script type="text/javascript">
     $(document).ready(function() {
         $('#productos').DataTable({

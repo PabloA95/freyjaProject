@@ -1,0 +1,68 @@
+nav{
+	border-radius: 1em;
+}
+
+footer{
+	background-color: pink;
+}
+
+#logo{
+	display:block;
+	margin:auto;
+	width:150px;
+	height:"auto";
+}
+
+#cont-logo{
+	background-color: #FFE4E1;
+}
+
+#logo-freyja{
+	height: 150px;
+	width: auto;
+	display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#hamburger-menu{
+  height: 32px;
+  width: auto;
+}
+
+.btn-freyja{
+	background-color: pink;
+}
+
+.navbar, .navbar-brand, a{
+  	background-color: #F8BBD0;
+  	color: #17a2b8 !important;
+}
+
+.nav-item{
+	margin-left: 2em !important;
+	/*font-weight: bold;*/
+}
+
+.boton{
+	padding: 0.5em;
+}
+
+.width7em{
+	width: 7em !important;
+}
+
+.lalala{
+	float: left;
+	align-items: center;
+	display: inline-block;
+
+}
+
+.pablo{
+	display:block;
+	/*width:37% ;
+	margin-right:31.5% !important;
+	margin-left:31.5% !important;*/
+	position: absolute;
+}
