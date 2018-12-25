@@ -95,12 +95,22 @@
 				<li class="nav-item">
 					<a class="navbar-brand" href="{{ path('producto_new') }}">Agregar productos</a>
 				</li>
+				<!-- <li class="nav-item">
+					<a class="navbar-brand" href="{{ path('fos_user_security_logout') }}">Cerrar sesion</a>
+				</li> -->
 	    </ul>
-			<a class="dropdown-item" href="{{ path('fos_user_security_logout') }}">Cerrar sesion</a>
-	    <form class="form-inline my-2 my-lg-0">
+			<div class="collapse navbar-collapse ml-auto" id="navb">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="navbar-brand" href="{{ path('fos_user_security_logout') }}">Cerrar sesion</a>
+					</li>
+		    </ul>
+			</div>
+	    <!-- <form class="form-inline my-2 my-lg-0">
 	      <input class="form-control mr-sm-2" type="text" placeholder="Buscar">
 	      <button class="btn btn-info my-2 my-sm-0" type="button">Buscar Producto</button>
-	    </form>
+	    </form> -->
+
 	  </div>
 	</nav>
 <div class="container mt-3">

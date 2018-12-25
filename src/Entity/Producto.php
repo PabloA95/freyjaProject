@@ -53,13 +53,13 @@ class Producto
 
     /**
      * @ORM\ManyToOne(targetEntity="Marca", cascade={"persist"}, fetch="EAGER")
-     * @ORM\JoinColumn(name="id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="marca", referencedColumnName="id")
      */
     private $marca;
 
     /**
      * @ORM\ManyToOne(targetEntity="Descripcion", cascade={"persist"}, fetch="EAGER")
-     * @ORM\JoinColumn(name="id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="descripcion", referencedColumnName="id")
      */
     private $descripcion;
 
