@@ -30,13 +30,31 @@ footer{
   width: auto;
 }
 
+#agregar-marca, #agregar-descripcion{
+	position: fixed;
+	top: 20%;
+	background-color: black;
+	opacity: 0.9;
+	padding-top: 5em;
+	padding-bottom: 5em;
+	visibility: hidden;
+	width: 80%;
+	left: 10%;
+	right: 10%;
+	border-radius: 5%;
+}
+
+#id_estado{
+	height: 3em;
+}
+
 .btn-freyja{
 	background-color: pink;
 }
 
 .navbar, .navbar-brand, a{
   	background-color: #F8BBD0;
-  	color: #17a2b8 !important;
+  	/* color: #17a2b8 !important; */
 }
 
 .nav-item{
@@ -44,7 +62,33 @@ footer{
 	/*font-weight: bold;*/
 }
 
+.formularios-agregar{
+	width: 100%;
+	align-items: center;
+	align-content: center;
+	text-align: center;
+	align-self: center;
+}
+
+.formulario{
+	margin: auto;
+}
+
+.span-group{
+	width: 8.2em !important;
+	opacity: 1 !important;
+}
+
+.titulo{
+  color: white;
+}
+
+.width7em{
+  width:7em !important;
+}
+
 .boton{
+	width: 3em;
 	padding: 0.5em;
 }
 
