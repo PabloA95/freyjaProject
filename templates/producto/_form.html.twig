@@ -1,55 +1,4 @@
 {{ form_start(form) }}
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-<style type="text/css">
-	.formularios-agregar{
-		width: 100%;
-		align-items: center;
-		align-content: center;
-		text-align: center;
-		align-self: center;
-
-	}
-	.formulario{
-		margin: auto;
-	}
-	.span-group{
-		width: 8.2em !important;
-		opacity: 1 !important;
-	}
-
-	#agregar-marca, #agregar-descripcion{
-		position: fixed;
-		top: 20%;
-		background-color: black;
-		opacity: 0.9;
-		padding-top: 5em;
-		padding-bottom: 5em;
-		visibility: hidden;
-		width: 80%;
-		left: 10%;
-		right: 10%;
-		border-radius: 5%;
-
-	}
-/*	.boton-agregar{
-		width: 5.3em !important;
-	}*/
-	#id_estado{
-		height: 3em;
-	}
-	.boton{
-		width: 3em;
-	}
-  .titulo{
-    color: white;
-  }
-</style>
-<style media="screen">
-  .width7em{
-    width:7em !important;
-  }
-</style>
 <div class="container card col-10">
   <div class="col-md-12 mt-3 mb-3">
     <div class="input-group">
@@ -89,10 +38,20 @@
       </div>
     </div>
     <div class="input-group">
-      <div class="form-group col-md-2 offset-md-1">
+      <!-- {# <div class="form-group col-md-2 offset-md-1">
         {{form_label(form.estado, null, {'label_attr': {'class': 'input-group-text'}})}}
-        {{form_widget(form.estado, {'attr': {'class': 'form-control'}})}}
-      </div>
+				{{form_widget(form.estado, {'attr': {'class': 'form-control'}})}}
+      </div>#} -->
+			<div class="col-md-2 col-md-2 offset-md-1">
+				<div class="input-group">
+					<div class="input-group-prepend">
+						{{form_label(form.estado, null, {'label_attr': {'class': 'input-group-text'}})}}
+					</div>
+					<div class="input-group-text">
+						{{form_widget(form.estado)}}
+					</div>
+				</div>
+			</div>
       <div class="form-group col-md-4">
         {{form_label(form.stock, null, {'label_attr': {'class': 'input-group-text'}})}}
         {{form_widget(form.stock, {'attr': {'class': 'form-control'}})}}

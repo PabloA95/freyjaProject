@@ -24,7 +24,7 @@
 
 {% block body %}
     <h1>Producto index</h1>
-
+    <a href="{{ path('exportar_pdf') }}" class='btn btn-info'>Exportar a PDF<i class="material-icons align-bottom">file_download</i></a>
     <table class="table table-striped" id="productos">
         <thead>
             <tr>
@@ -38,7 +38,7 @@
                 <!-- <th>Estado</th>
                 <th>Stock</th>
                 <th>CodigoBarra</th> -->
-                <th>actions</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -55,8 +55,9 @@
                 <td>{{ producto.stock }}</td>
                 <td>{{ producto.codigoBarra }}</td> -->
                 <td>
-                    <a href="{{ path('producto_show', {'id': producto.id}) }}" class="btn btn-primary">Ver</a>
-                    <a href="{{ path('producto_edit', {'id': producto.id}) }}" class='btn btn-info'>Editar</a>
+                    <a href="{{ path('producto_show', {'id': producto.id}) }}" class="btn btn-primary">Ver<i class="material-icons align-bottom">remove_red_eye</i>
+                  	</a>
+                    <a href="{{ path('producto_edit', {'id': producto.id}) }}" class='btn btn-info'>Editar<i class="material-icons align-bottom">edit</i></a>
                 </td>
             </tr>
         {% else %}
@@ -67,5 +68,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('producto_new') }}" class='btn btn-success'>Agregar Producto</a>
+    <a href="{{ path('producto_new') }}" class='btn btn-success'>Agregar Producto<i class="material-icons align-bottom">add</i></a>
 {% endblock %}

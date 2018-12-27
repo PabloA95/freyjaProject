@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Productos</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Productos</h1>
+      <table class="table table-striped" id="productos">
+          <thead>
+              <tr>
+                  <!-- <th>Id</th> -->
+                  <th>Codigo</th>
+                  <th>Marca</th>
+                  <th>Descripcion</th>
+                  <th>PrecioEfectivo</th>
+                  <th>PrecioTarjeta</th>
+                  <th>PrecioCompra</th>
+                  <th>Estado</th>
+                  <th>Stock</th>
+                  <th>CodigoBarra</th>
+              </tr>
+          </thead>
+          <tbody>
+          {% for producto in productos %}
+              <tr>
+                  <!-- <td>{{ producto.id }}</td> -->
+                  <td>{{ producto.codigo }}</td>
+                  <td>{{ producto.marca.descripcion }}</td>
+                  <td>{{ producto.descripcion.descripcion }}</td>
+                  <td>{{ producto.precioEfectivo }}</td>
+                  <td>{{ producto.precioTarjeta }}</td>
+                  <td>{{ producto.precioCompra }}</td>
+                  <td>{{ producto.estado ? 'Yes' : 'No' }}</td>
+                  <td>{{ producto.stock }}</td>
+                  <td>{{ producto.codigoBarra }}</td>
+              </tr>
+          {% else %}
+              <tr>
+                  <td colspan="9">No hay productos cargados</td>
+              </tr>
+          {% endfor %}
+          </tbody>
+      </table>
+    </div>
+  </body>
+</html>

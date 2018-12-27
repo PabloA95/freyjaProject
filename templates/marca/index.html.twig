@@ -10,7 +10,7 @@
         <thead>
             <tr>
                 <th>Descripcion</th>
-                <th>actions</th>
+                <th class="action-col">Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -18,8 +18,8 @@
             <tr>
                 <td>{{ marca.descripcion }}</td>
                 <td>
-                    <a href="{{ path('marca_show', {'id': marca.id}) }}" class="btn btn-primary">Ver</a>
-                    <a href="{{ path('marca_edit', {'id': marca.id}) }}" class='btn btn-info'>Editar</a>
+                    <a href="{{ path('marca_show', {'id': marca.id}) }}" class="btn btn-primary">Ver<i class="material-icons align-bottom">remove_red_eye</i></a>
+                    <a href="{{ path('marca_edit', {'id': marca.id}) }}" class='btn btn-info'>Editar<i class="material-icons align-bottom">edit</i></a>
                 </td>
             </tr>
         {% else %}
@@ -30,7 +30,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('marca_new') }}" class='btn btn-success'>Agregar marca</a>
+    <a href="{{ path('marca_new') }}" class='btn btn-success'>Agregar marca<i class="material-icons align-bottom">add</i></a>
   </div>
 </div>
 {% endblock %}

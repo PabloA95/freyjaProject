@@ -13,11 +13,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
 
 /**
  * @Route("/producto")
  */
-class ProductoController extends AbstractController
+class ProductoController extends Controller
 {
     /**
      * @Route("/", name="producto_index", methods={"GET"})
@@ -84,16 +86,34 @@ class ProductoController extends AbstractController
     {
         $form = $this->createForm(ProductoType::class, $producto);
         $form->handleRequest($request);
-
+        $marca = new Marca();
+        $formMarca = $this->createForm(MarcaType::class, $marca);
+        $formMarca->handleRequest($request);
+        $descripcion = new Descripcion();
+        $formDescripcion = $this->createForm(DescripcionType::class, $descripcion);
+        $formDescripcion->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('producto_index', ['id' => $producto->getId()]);
         }
-
+        if ($formMarca->isSubmitted() && $formMarca->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($marca);
+            $entityManager->flush();
+        }
+        if ($formDescripcion->isSubmitted() && $formDescripcion->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($descripcion);
+            $entityManager->flush();
+        }
         return $this->render('producto/edit.html.twig', [
             'producto' => $producto,
             'form' => $form->createView(),
+            'marca' => $producto,
+            'formMarca' => $formMarca->createView(),
+            'descripcion' => $descripcion,
+            'formDescripcion' => $formDescripcion->createView(),
         ]);
     }
 
@@ -110,4 +130,24 @@ class ProductoController extends AbstractController
 
         return $this->redirectToRoute('producto_index');
     }
+
+    /**
+     * @Route("/exportar/pdf", name="exportar_pdf")
+     */
+    public function number()
+    {
+      $repository = $this->getDoctrine()->getRepository(Producto::class);
+      $productos = $repository->findAllOrder();
+      $html=$this->renderView('producto/pdf.html.twig', array(
+          'productos' => $productos,));
+      $pdf=$this->get('knp_snappy.pdf');
+      $pdf->setOption('encoding', 'UTF-8');
+      $pdfContents=$pdf->getOutputFromHtml($html);
+      $response=new Response($pdfContents);
+      $response->headers->set('Content-type', 'application/octect-stream');
+      $response->headers->set('Content-Disposition', sprintf('attachment; filename="%s"', "Productos-".date('d-m-Y').".pdf"));
+      $response->headers->set('Content-Transfer-Encoding', 'binary');
+      return $response;
+    }
+
 }

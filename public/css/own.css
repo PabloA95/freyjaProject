@@ -87,6 +87,10 @@ footer{
   width:7em !important;
 }
 
+.action-col{
+	width:13em;
+}
+
 .boton{
 	width: 3em;
 	padding: 0.5em;

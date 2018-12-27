@@ -19,6 +19,17 @@ class ProductoRepository extends ServiceEntityRepository
         parent::__construct($registry, Producto::class);
     }
 
+    public function findAllOrder(){
+  		$query =$this->getEntityManager()
+          ->createQuery('SELECT pr
+          FROM App:Producto pr
+          INNER JOIN App:Marca mc
+          INNER JOIN App:Descripcion ds
+          WHERE pr.marca=mc.id AND pr.descripcion=ds.id
+          ORDER BY mc.descripcion,ds.descripcion ')
+          ->getResult();
+        return $query;
+  	}
     // /**
     //  * @return Producto[] Returns an array of Producto objects
     //  */
