@@ -14,7 +14,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 
 /**
  * @Route("/producto")
@@ -134,7 +137,7 @@ class ProductoController extends Controller
     /**
      * @Route("/exportar/pdf", name="exportar_pdf")
      */
-    public function number()
+    public function exportar_pdf()
     {
       $repository = $this->getDoctrine()->getRepository(Producto::class);
       $productos = $repository->findAllOrder();
@@ -148,6 +151,36 @@ class ProductoController extends Controller
       $response->headers->set('Content-Disposition', sprintf('attachment; filename="%s"', "Productos-".date('d-m-Y').".pdf"));
       $response->headers->set('Content-Transfer-Encoding', 'binary');
       return $response;
+    }
+
+    /**
+     * @Route("/exportar/json", name="exportar_json")
+     */
+    public function exportar_json()
+    {
+      $encoders = array(new XmlEncoder(), new JsonEncoder());
+$normalizers = array(new ObjectNormalizer());
+
+$serializer = new Serializer($normalizers, $encoders);
+      $repository = $this->getDoctrine()->getRepository(Producto::class);
+      $productos = $repository->findAllOrder();
+      // $html=$this->renderView('producto/pdf.html.twig', array(
+      //     'productos' => $productos,));
+      $jsonContent = $serializer->serialize($productos, 'json');
+      //echo $jsonContent;
+      $response=new Response($jsonContent);
+      $response->headers->set('Content-type', 'application/octect-stream');
+      $response->headers->set('Content-Disposition', sprintf('attachment; filename="%s"', "Productos-".date('d-m-Y').".json"));
+      $response->headers->set('Content-Transfer-Encoding', 'binary');
+      return $response;
+    //   // $pdf=$this->get('knp_snappy.pdf');
+    //   // $pdf->setOption('encoding', 'UTF-8');
+    //   // $pdfContents=$pdf->getOutputFromHtml($html);
+    //   // $response=new Response($pdfContents);
+    //   // $response->headers->set('Content-type', 'application/octect-stream');
+    //   // $response->headers->set('Content-Disposition', sprintf('attachment; filename="%s"', "Productos-".date('d-m-Y').".pdf"));
+    //   // $response->headers->set('Content-Transfer-Encoding', 'binary');
+    //   // return $response;
     }
 
 }
