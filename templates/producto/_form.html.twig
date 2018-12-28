@@ -63,17 +63,9 @@
 
     </div>
     <div class="row align-items-center justify-content-center mb-3">
-			<a href="{{ path('producto_index') }}" class="btn btn-danger width7em mr-1">Cancelar</a>
+			<a href="{{ path('producto_index') }}" class="btn btn-danger width7em mr-1" onclick="return confirm('¿Estas segura que deseas cancelar la carga de este producto?');">Cancelar</a>
       <button class="btn btn-primary width7em ml-1">{{ button_label|default('Crear') }} <i class="material-icons align-bottom">check</i></button>
     </div>
-    <!--     <div class="row align-items-center justify-content-center">
-          <div>
-            <button class="btn width7em" style="width:7em;">{{ button_label|default('Crear') }}</button>
-          </div>
-          <div>
-            <a href="{{ path('producto_index') }}" class="btn btn-danger col-md-2 width7em" style="width:7em;">Cancelar</a>
-          </div>
-        </div> -->
 
   </div>
 {{ form_end(form) }}

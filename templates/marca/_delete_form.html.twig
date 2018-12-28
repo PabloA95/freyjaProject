@@ -1,4 +1,4 @@
-<form method="post" class="form-check form-check-inline" action="{{ path('marca_delete', {'id': marca.id}) }}" onsubmit="return confirm('Eliminar esta marca?');">
+<form method="post" class="form-check form-check-inline" action="{{ path('marca_delete', {'id': marca.id}) }}" onsubmit="return confirm('¿Estas segura que deseas eliminar esta marca?');">
     <input type="hidden" name="_method" value="DELETE">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ marca.id) }}">
     <button class="btn btn-danger width7em">Borrar <i class="material-icons align-bottom">delete</i></button>
