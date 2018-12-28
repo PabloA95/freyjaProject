@@ -1,17 +1,42 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Productos</title>
+    <style media="screen">
+      .table-striped tbody tr:nth-of-type(odd) {
+        background-color: rgba(0,0,0,.05);
+      }
+      table {
+        border-collapse: collapse;
+      }
+      .table {
+        width: 100%;
+        margin-bottom: 1rem;
+        background-color: transparent;
+      }
+      .table th,
+      .table td {
+        padding: 0.75rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+      }
+      .table thead th {
+        vertical-align: bottom;
+        border-bottom: 2px solid #dee2e6;
+      }
+      .table tbody + tbody {
+        border-top: 2px solid #dee2e6;
+      }
+    </style>
   </head>
   <body>
-    <div class="container">
+    <div>
       <h1>Productos</h1>
-      <table class="table table-striped" id="productos">
+      <table class="table table-striped">
           <thead>
               <tr>
-                  <!-- <th>Id</th> -->
                   <th>Codigo</th>
                   <th>Marca</th>
                   <th>Descripcion</th>
@@ -26,7 +51,6 @@
           <tbody>
           {% for producto in productos %}
               <tr>
-                  <!-- <td>{{ producto.id }}</td> -->
                   <td>{{ producto.codigo }}</td>
                   <td>{{ producto.marca.descripcion }}</td>
                   <td>{{ producto.descripcion.descripcion }}</td>

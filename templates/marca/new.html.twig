@@ -1,10 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Marca{% endblock %}
+{% block title %}Agregar marca{% endblock %}
 
 {% block body %}
-    <h1>Create new Marca</h1>
+<div class="container">
+  <div class="col-md-6 offset-md-3 card align-items-center">
+    <h1>Agregar marca</h1>
 
     {{ include('marca/_form.html.twig') }}
-
+  </div>
+</div>
 {% endblock %}

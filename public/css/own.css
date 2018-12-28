@@ -48,6 +48,10 @@ footer{
 	height: 3em;
 }
 
+#marca_descripcion{
+	width: 100%;
+}
+
 .btn-freyja{
 	background-color: pink;
 }
@@ -88,7 +92,7 @@ footer{
 }
 
 .action-col{
-	width:13em;
+	width:14em;
 }
 
 .boton{

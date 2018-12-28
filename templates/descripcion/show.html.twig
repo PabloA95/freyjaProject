@@ -3,14 +3,12 @@
 {% block title %}Descripcion{% endblock %}
 
 {% block body %}
+<div class="container">
+  <div class="col-md-8 offset-md-2">
     <h1>Descripcion</h1>
 
     <table class="table">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ descripcion.id }}</td>
-            </tr>
             <tr>
                 <th>Descripcion</th>
                 <td>{{ descripcion.descripcion }}</td>
@@ -18,9 +16,10 @@
         </tbody>
     </table>
 
-    <a href="{{ path('descripcion_index') }}">back to list</a>
-
-    <a href="{{ path('descripcion_edit', {'id': descripcion.id}) }}">edit</a>
+    <a href="{{ path('descripcion_index') }}" class="btn btn-primary width7em">Volver</a>
+    <a href="{{ path('descripcion_edit', {'id': descripcion.id}) }}" class="btn btn-success width7em">Editar</a>
 
     {{ include('descripcion/_delete_form.html.twig') }}
+  </div>
+</div>
 {% endblock %}

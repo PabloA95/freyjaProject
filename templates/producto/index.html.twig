@@ -1,12 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Producto index{% endblock %}
+{% block title %}Productos{% endblock %}
 
 {% block stylesheets %}
-<!-- <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script> -->
-<!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css"> -->
 <link rel="stylesheet" href="{{ asset('dataTables.css', 'css') }}">
 <link rel="stylesheet" href="{{ asset('dataTables.min.css', 'css') }}">
 <script src="{{ asset('dataTables.js', 'js') }}"></script>
@@ -16,16 +12,17 @@
         $('#productos').DataTable({
             "lengthChange" : false,
             "paging" : true,
-            "pageLength" : 5
+            "pageLength" : 10
         });
     } );
 </script>
 {% endblock %}
 
 {% block body %}
-    <h1>Producto index</h1>
+    <h1>Productos</h1>
     <a href="{{ path('exportar_pdf') }}" class='btn btn-info'>Exportar a PDF<i class="material-icons align-bottom">file_download</i></a>
     <a href="{{ path('exportar_json') }}" class='btn btn-info'>Exportar a JSON<i class="material-icons align-bottom">file_download</i></a>
+    <a href="{{ path('producto_new') }}" class='btn btn-success'>Agregar Producto<i class="material-icons align-bottom">add</i></a>
     <table class="table table-striped" id="productos">
         <thead>
             <tr>
@@ -45,7 +42,7 @@
         <tbody>
         {% for producto in productos %}
             <tr>
-                <!-- <td>{{ producto.id }}</td> -->
+                <!-- <td>{#{{ producto.id }}#}</td> -->
                 <td>{{ producto.codigo }}</td>
                 <td>{{ producto.marca.descripcion }}</td>
                 <td>{{ producto.descripcion.descripcion }}</td>
@@ -56,9 +53,9 @@
                 <td>{{ producto.stock }}</td>
                 <td>{{ producto.codigoBarra }}</td> -->
                 <td>
-                    <a href="{{ path('producto_show', {'id': producto.id}) }}" class="btn btn-primary">Ver<i class="material-icons align-bottom">remove_red_eye</i>
+                    <a href="{{ path('producto_show', {'id': producto.id}) }}" class="btn btn-primary">Ver <i class="material-icons align-bottom">remove_red_eye</i>
                   	</a>
-                    <a href="{{ path('producto_edit', {'id': producto.id}) }}" class='btn btn-info'>Editar<i class="material-icons align-bottom">edit</i></a>
+                    <a href="{{ path('producto_edit', {'id': producto.id}) }}" class='btn btn-info'>Editar <i class="material-icons align-bottom">edit</i></a>
                 </td>
             </tr>
         {% else %}
@@ -68,6 +65,4 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('producto_new') }}" class='btn btn-success'>Agregar Producto<i class="material-icons align-bottom">add</i></a>
 {% endblock %}

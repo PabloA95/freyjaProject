@@ -159,28 +159,16 @@ class ProductoController extends Controller
     public function exportar_json()
     {
       $encoders = array(new XmlEncoder(), new JsonEncoder());
-$normalizers = array(new ObjectNormalizer());
-
-$serializer = new Serializer($normalizers, $encoders);
+      $normalizers = array(new ObjectNormalizer());
+      $serializer = new Serializer($normalizers, $encoders);
       $repository = $this->getDoctrine()->getRepository(Producto::class);
       $productos = $repository->findAllOrder();
-      // $html=$this->renderView('producto/pdf.html.twig', array(
-      //     'productos' => $productos,));
       $jsonContent = $serializer->serialize($productos, 'json');
-      //echo $jsonContent;
       $response=new Response($jsonContent);
       $response->headers->set('Content-type', 'application/octect-stream');
       $response->headers->set('Content-Disposition', sprintf('attachment; filename="%s"', "Productos-".date('d-m-Y').".json"));
       $response->headers->set('Content-Transfer-Encoding', 'binary');
       return $response;
-    //   // $pdf=$this->get('knp_snappy.pdf');
-    //   // $pdf->setOption('encoding', 'UTF-8');
-    //   // $pdfContents=$pdf->getOutputFromHtml($html);
-    //   // $response=new Response($pdfContents);
-    //   // $response->headers->set('Content-type', 'application/octect-stream');
-    //   // $response->headers->set('Content-Disposition', sprintf('attachment; filename="%s"', "Productos-".date('d-m-Y').".pdf"));
-    //   // $response->headers->set('Content-Transfer-Encoding', 'binary');
-    //   // return $response;
     }
 
 }

@@ -3,14 +3,11 @@
 {% block title %}Marca{% endblock %}
 
 {% block body %}
+<div class="container">
+  <div class="col-md-8 offset-md-2">
     <h1>Marca</h1>
-
     <table class="table">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ marca.id }}</td>
-            </tr>
             <tr>
                 <th>Descripcion</th>
                 <td>{{ marca.descripcion }}</td>
@@ -18,9 +15,10 @@
         </tbody>
     </table>
 
-    <a href="{{ path('marca_index') }}">back to list</a>
-
-    <a href="{{ path('marca_edit', {'id': marca.id}) }}">edit</a>
+    <a href="{{ path('marca_index') }}" class="btn btn-primary width7em">Volver</a>
+    <a href="{{ path('marca_edit', {'id': marca.id}) }}" class="btn btn-success width7em">Editar</a>
 
     {{ include('marca/_delete_form.html.twig') }}
+  </div>
+</div>
 {% endblock %}

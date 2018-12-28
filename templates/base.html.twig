@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	{% block titulo %}
-  <title>Productos</title>
-    {% endblock %}
+	<title>{% block title %}{% endblock %}</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="{{ asset('bootstrap.min.css', 'css') }}">
@@ -17,7 +15,7 @@
 
 <body >
 	<div id="cont-logo" class="center">
-		<img src="{{ asset('freyja_logo.png', 'images') }}" alt="Logo de Freyja" id="logo-freyja">
+		<a href="/"><img src="{{ asset('freyja_logo.png', 'images') }}" alt="Logo de Freyja" id="logo-freyja"></a>
 	</div>
 	{% block navbar %}
 	<nav class="navbar navbar-expand-lg">
