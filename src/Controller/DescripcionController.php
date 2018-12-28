@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Descripcion;
+use App\Entity\Producto;
 use App\Form\DescripcionType;
 use App\Repository\DescripcionRepository;
+use App\Repository\ProductoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -79,12 +81,22 @@ class DescripcionController extends AbstractController
      */
     public function delete(Request $request, Descripcion $descripcion): Response
     {
+        $errno=array();
         if ($this->isCsrfTokenValid('delete'.$descripcion->getId(), $request->request->get('_token'))) {
+          $repository = $this->getDoctrine()->getRepository(Producto::class);
+          $result=$productos = $repository->findBy(array('descripcion'=>$descripcion->getId()));
+          if(count($result)==0){
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($descripcion);
             $entityManager->flush();
+            return $this->redirectToRoute('descripcion_index');
+          } else {
+            $errno[0]='No se puede eleminar esta descripcion porque tiene productos asociados';
+            return $this->render('descripcion/show.html.twig', ['descripcion' => $descripcion, 'errno'=>$errno]);
+          }
+        } else {
+          return $this->redirectToRoute('descripcion_index');
         }
 
-        return $this->redirectToRoute('descripcion_index');
     }
 }

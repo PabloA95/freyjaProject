@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Marca;
+use App\Entity\Producto;
 use App\Form\MarcaType;
 use App\Repository\MarcaRepository;
+use App\Repository\ProductoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -79,12 +81,23 @@ class MarcaController extends AbstractController
      */
     public function delete(Request $request, Marca $marca): Response
     {
+        $errno=array();
         if ($this->isCsrfTokenValid('delete'.$marca->getId(), $request->request->get('_token'))) {
+          $repository = $this->getDoctrine()->getRepository(Producto::class);
+          $result=$productos = $repository->findBy(array('marca'=>$marca->getId()));
+          if(count($result)==0){
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($marca);
             $entityManager->flush();
+            return $this->redirectToRoute('marca_index');
+          } else {
+            $errno[0]='No se puede eleminar esta marca porque tiene productos asociados';
+            return $this->render('marca/show.html.twig', ['marca' => $marca, 'errno'=>$errno]);
+          }
+        } else {
+          return $this->redirectToRoute('marca_index');
         }
 
-        return $this->redirectToRoute('marca_index');
+
     }
 }

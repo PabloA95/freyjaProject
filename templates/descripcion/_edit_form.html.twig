@@ -1,7 +1,7 @@
 {{ form_start(form) }}
     {{ form_widget(form, {'attr':{'class': 'm-3'}}) }}
     <div class="mb-3">
-      <button class="btn btn-success width7em">{{ button_label|default('Crear') }}</button>
-      <a href="{{ path('descripcion_show', {'id': descripcion.id}) }}" class="btn btn-primary width7em">Volver</a>
+      <button class="btn btn-success width7em">{{ button_label|default('Crear') }} <i class="material-icons align-bottom">check</i></button>
+      <a href="{{ path('descripcion_show', {'id': descripcion.id}) }}" class="btn btn-primary width7em">Volver <i class="material-icons align-bottom">arrow_back</i></a>
     </div>
 {{ form_end(form) }}
